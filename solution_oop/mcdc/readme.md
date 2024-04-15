@@ -2,13 +2,14 @@ I want a cli in python that fulfills the following requirements:
 - cli commands should follow the following structure: command subcommand --arguments
 - command can be: run, download, upload
 - subcommand can be: swa, mcdc, qac
-- The following commands should be implemented:
--- run swa can have the following arguments: --force
--- run qac can have the following arguments: --recursive
--- run mcdc can have the following arguments: --check
--- upload swa can have the following arguments: --overwrite
--- upload qac can have the following arguments: --update
--- download swa can have the following arguments: --latest
+- The following cli commandsshould be implemented:
+-- run mcdc --check
+-- upload mcdc --force
+-- run swa --force
+-- upload swa --overwrite
+-- download swa --latest
+-- run qac --recursive
+-- upload qac --update
 - the subcommands should be implemented in separate files e.g. swa.py, qac.py, mcdc.py
 - The command/subcommand definition in argparse should be inside the swa, mcdc and qac modules because more modules will be added in the future and adding/removing modules should be as simple as possible
 - It should be modular so that further modules can be added easily
