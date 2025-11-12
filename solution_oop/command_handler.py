@@ -1,10 +1,15 @@
-# command_handler.py
-class CommandHandler:
+# solution_oop/command_handler.py
+from abc import ABC, abstractmethod
+
+class CommandHandler(ABC):
+    command_arguments = {}
+
     def __init__(self, name):
         self.name = name
 
+    @abstractmethod
     def get_commands(self):
-        raise NotImplementedError
+        return list(self.command_arguments.keys())
 
     def add_to_parser(self, command_subparsers):
         for command in self.get_commands():
@@ -12,7 +17,8 @@ class CommandHandler:
             self.add_arguments(module_subparser, command)
 
     def add_arguments(self, parser, command):
-        raise NotImplementedError
+        if command in self.command_arguments:
+            self.command_arguments[command](parser)
 
     @staticmethod
     def add_handlers_to_parser(handlers, parser):
